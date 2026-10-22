@@ -1,0 +1,8 @@
+Student ID: 230103136
+Workers: 2
+Iterations per worker: 50000000
+Unpadded Shared: 0.0 seconds
+Padded/Local: 0.0 seconds
+Execution Ratio: 2.96 x
+Shared result correct: True
+Local result correct: True
