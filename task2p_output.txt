@@ -1,0 +1,9 @@
+ID: 230103136
+Threads: 4
+Shared PI: 3.14147
+Shared Error: 0.000123
+Shared Time: 25264.5 ms
+Local PI: 3.141482
+Local Error: 0.000111
+Local Time: 13778.91 ms
+Speedup: 1.83
