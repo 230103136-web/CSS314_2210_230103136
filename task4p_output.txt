@@ -1,0 +1,15 @@
+ID: 230103136
+N: 100000
+Pipe: 3.93 ms
+Shared: 3.81 ms
+Ratio: 1.03
+
+N: 1000000
+Pipe: 43.23 ms
+Shared: 2.57 ms
+Ratio: 16.8
+
+N: 10000000
+Pipe: 757.36 ms
+Shared: 2.58 ms
+Ratio: 293.03
