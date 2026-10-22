@@ -1,0 +1,10 @@
+"feat: task 6 race condition forensics"
+Student ID: 230103136
+Threads: 4
+Expected: 8000000
+Actual without lock: 8000000
+Lost updates: 0.0 %
+Correct with lock: 8000000
+Without lock time: 1.15 ms
+With lock time: 0.6 ms
+Lock penalty: -0.55 ms
