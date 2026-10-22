@@ -1,0 +1,10 @@
+"feat: task 1 baseline execution"
+Student ID: 230103136
+OS: Linux 6.6.122+
+CPU: x86_64
+Logical cores: 2
+Array size: 20000000
+Data type: float64
+Serial sum: 9996219.779434115
+Serial standard deviation: 0.2886905737598421
+Execution time (ms): 16722.885964
