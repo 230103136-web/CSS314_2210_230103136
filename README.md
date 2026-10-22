@@ -1,1 +1,4 @@
 # CSS314_2210_230103136
+Adilbek Akmaral
+2-N
+6-P
