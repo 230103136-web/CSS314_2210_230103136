@@ -1,0 +1,11 @@
+"feat: task 4 scheduling under skew"
+Student ID: 230103136
+Workers: 4
+Items: 1000
+
+Strategy | Wall Time (s) | Completion Delta (s)
+--------------------------------------------------
+Static   | 0.2687        | 0.0100
+Dynamic  | 0.2664        | 0.0017
+
+Speedup: 1.01 x
