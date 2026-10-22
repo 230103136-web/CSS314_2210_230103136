@@ -1,0 +1,16 @@
+"feat: task 5 overhead crossover"
+Student ID: 230103136
+Available core: 2
+Workers used: 2
+
+N | Serial (ms) | Parallel (ms) | Faster
+-------------------------------------------------------
+       100 |      0.0014 |        0.0083 | Serial
+      1000 |      0.0018 |        0.0088 | Serial
+     10000 |      0.0049 |        0.0149 | Serial
+    100000 |      0.0795 |        0.0813 | Serial
+   1000000 |      1.5587 |        1.2679 | Parallel
+  10000000 |     45.4983 |       35.2782 | Parallel
+
+Crossover res:
+Parallel faster between N=100000 and N=1000000
