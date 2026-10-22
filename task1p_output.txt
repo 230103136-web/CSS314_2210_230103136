@@ -1,0 +1,7 @@
+ID: 230103136
+Cores: 2
+Threads: 2
+Row: 54.94 ms
+Col: 990.88 ms
+Penalty: 18.04
+Match: True
