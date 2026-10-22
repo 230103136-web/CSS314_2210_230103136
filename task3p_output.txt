@@ -1,0 +1,6 @@
+ID: 230103136
+Cores: 2
+Serial: 3.63 ms
+Parallel: 17.26 ms
+Speedup: 0.21
+Verify: PASS
