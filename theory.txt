@@ -1,0 +1,34 @@
+GUSTAFSON LAW PRACTICE - THEORY
+
+Task 01 - Strong Scaling and Weak Scaling
+Amdahl's Law is about strong scaling. We keep the same problem size and add more processors to finish faster. Its formula is S(P) = 1 / (s + (1-s)/P). Here s is the serial fraction measured for the original fixed workload. When P becomes very large, the speedup cannot exceed 1/s if s > 0.
+Gustafson's Law is about weak scaling. We add processors and also increase the problem size, trying to keep the total running time about the same. Its formula is S(P) = P - alpha(P-1), where alpha is the serial fraction measured on the parallel machine. For ideal weak scaling, the parallel work grows roughly with P. So Amdahl is called fixed-size and Gustafson is called fixed-time scaling.
+
+Task 02 - Deriving Gustafson's Formula
+On P processors, suppose serial time is s and parallel-phase time is p, with s + p = 1. If the parallel phase runs ideally, doing the same expanded workload on one processor would take P*p time for that phase. Total one-processor time is s + P*p. Thus scaled speedup is (s + P*p)/(s+p) = s + P*p. Since p = 1-s, we get s + P(1-s) = P - s(P-1). Calling the parallel-machine serial fraction alpha gives S(P) = P - alpha(P-1).
+
+Task 03 - Measuring the Serial Fraction
+Amdahl measures the serial part against the time for a fixed workload on one processor. Gustafson measures it as a fraction of the running time on the parallel system for a larger workload. These are not the same fraction. If serial time stays about the same while parallel work grows, the serial fraction on the larger parallel run can remain small. This is why Gustafson can predict large scaled speedups without contradicting Amdahl's fixed-workload limit. In practice, extra communication can still make scaling worse.
+
+Task 04 - Efficiency Limits
+Gustafson efficiency is E(P) = S(P)/P = [P-alpha(P-1)]/P = 1-alpha+alpha/P. Therefore, as P goes to infinity, E(P) goes to 1-alpha.
+Amdahl efficiency is E_A(P) = 1/[P*s+(1-s)]. For a fixed nonzero s, it goes to zero when P goes to infinity. If s = 0, both ideal models give efficiency 1. The different limits come from different workload assumptions.
+
+Task 05 - Amdahl's Pessimism
+The task sheet discusses the 1988 work of Gustafson, Montry and Benner on a 1024-processor nCUBE system. The main idea is that a larger problem can use many processors better than a small fixed problem. For example, with a 0.4% serial fraction and 1024 processors, Amdahl predicts 1/(0.004+0.996/1024) = about 201.1, while Gustafson predicts 1024-0.004(1023) = 1019.908. These are illustrative model calculations, not the measured results of that experiment. There is no contradiction because the workload assumptions are different.
+
+Task 11 - Sun-Ni and Memory-Bounded Scaling
+Gustafson grows the workload to keep time roughly constant. Sun-Ni considers increasing the workload when more memory is available. A simple memory-bounded speedup model is S = [s+p*G(P)]/[s+p*G(P)/P], where G(P) is the parallel work growth factor and s+p=1. G(P)=1 gives the fixed-size case. With G(P)=P, ideal parallel time is s+p=1, which gives Gustafson's scaled speedup. Real performance can be worse if memory bandwidth and communication become bottlenecks. It can be better than a simple fixed-alpha estimate when larger problems reduce the relative cost of setup or improve utilization.
+
+Task 12 - Adding Communication Cost
+The basic Gustafson formula does not explicitly show increasing communication cost. Let C(P) be extra communication time on P processors, with C(1)=0. If serial time is s and the useful parallel phase takes p on P processors, a simple modified model is S(P) = [s+P*p]/[s+p+C(P)]. For example, C(P) could grow like k*log2(P) or k*(sqrt(P)-1). When C(P) grows, the denominator gets bigger and scaled speedup becomes smaller. This is a simplified model and assumes communication is extra overhead, not already included in s or p.
+
+Task 13 - When Weak Scaling Fails
+First example: parallel BFS on a graph. Each level needs synchronization, and some processors can have much more work than others. Bigger graphs can also have more levels and communication, so running time may increase even when work per processor stays similar.
+Second example: distributed sorting. Processors may need to exchange large amounts of data and synchronize during several rounds. More processors can increase communication and contention. In both examples, adding processors does not guarantee constant running time.
+
+Task 14 - Isoefficiency
+Isoefficiency tells us how much useful work W must grow to keep parallel efficiency constant. If T_o is parallel overhead measured in work units, E = W/(W+T_o). Rearranging gives W = [E/(1-E)]*T_o for a chosen fixed efficiency. In an ideal weak-scaling program, W grows like P and overhead stays small enough, so efficiency can remain roughly constant. There is no single isoefficiency function for every Gustafson-style program: it depends on its actual overhead. For example, if T_o grows as P*log(P), then W must also grow at least that fast to maintain the same efficiency.
+
+Task 15 - Energy Use
+Let N be the number of processors, T the running time, P_idle the power used by each idle processor, and P_active the extra power when fully active. With average utilization u, total energy is E_N = N*T*(P_idle+u*P_active). For one processor it is E_1 = T*(P_idle+u1*P_active). If both runs last the same time and utilization is the same, the N-processor run uses N times as much energy. But under weak scaling it also completes a larger workload. That is why energy per unit of useful work is also important.

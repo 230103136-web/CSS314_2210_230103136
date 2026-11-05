@@ -1,0 +1,61 @@
+GUSTAFSON LAW PRACTICE - CALCULATIONS
+
+Task 06 - Speedup and Efficiency
+Given alpha = 0.04. S(P) = P-0.04(P-1) = 0.96P+0.04. E(P) = S(P)/P.
+P       Speedup       Efficiency
+16      15.40         96.2500%
+64      61.48         96.0625%
+256     245.80        96.0156%
+1024    983.08        96.0039%
+4096    3932.20       96.0010%
+16384   15728.68      96.0002%
+Example: S(64) = 64-0.04*63 = 61.48; E(64) = 61.48/64 = 0.960625.
+Efficiency gets closer to 96% as P grows. It does not drop to zero in this ideal model.
+
+Task 07 - Maximum Serial Fraction
+Given P = 8192 and S(P) >= 7500.
+8192-alpha(8191) >= 7500
+alpha(8191) <= 692
+alpha <= 692/8191 = 0.08448297 = 8.4483%.
+So the maximum allowed serial fraction is about 8.45%.
+
+Task 08 - Amdahl vs Gustafson
+Given P = 128 and s = alpha = 0.08.
+Amdahl: S_A = 1/(0.08+0.92/128) = 11.4695.
+Gustafson: S_G = 128-0.08*127 = 117.84.
+Difference = 117.84-11.4695 = 106.3705.
+Percentage difference relative to Amdahl = (106.3705/11.4695)*100 = about 927.42%.
+The numbers differ because Amdahl keeps the workload fixed while Gustafson scales it. The two 8% fractions are measured under different assumptions.
+
+Task 09 - Three Workload Phases
+Phase A (disk I/O and broadcast) = 2%.
+Phase B (synchronization) = 6%.
+Phase C (parallel calculation) = 92%.
+Assuming A and B count fully as serial overhead, alpha = 0.02+0.06 = 0.08.
+S(512) = 512-0.08*511 = 471.12.
+E(512) = 471.12/512 = 92.015625%.
+S(2048) = 2048-0.08*2047 = 1884.24.
+E(2048) = 1884.24/2048 = 92.00390625%.
+
+Task 10 - 3D Grid Memory
+Each node has 32 GB. Let b be bytes per grid cell. For a cubic grid, memory is b*N^3. So N_max = floor((total bytes/b)^(1/3)).
+64 nodes: total memory = 64*32 = 2048 GB.
+512 nodes: total memory = 512*32 = 16384 GB.
+Therefore N_64 = floor((2048*10^9/b)^(1/3)) and N_512 = floor((16384*10^9/b)^(1/3)), if GB means 10^9 bytes.
+The question does not give b, so there is no unique numeric N.
+Example only: if b = 8 bytes per cell, N_64 = 6349 and N_512 = 12699 (rounded down). Increasing nodes by 8 times roughly doubles each grid dimension because 8^(1/3) = 2.
+
+Task 16 - Matrix Multiplication Scaling
+For multiplying two N x N matrices, work is proportional to N^3 and matrix storage is proportional to N^2. To keep ideal compute time constant with P processors, N(P)^3/P = N(1)^3. Thus N(P) = N(1)*P^(1/3).
+Example dimension multipliers:
+P = 1: N/N0 = 1.000
+P = 8: N/N0 = 2.000
+P = 64: N/N0 = 4.000
+P = 512: N/N0 = 8.000
+P = 4096: N/N0 = 16.000
+Memory for the matrices grows as P^(2/3), not P. This ideal compute-based rule assumes enough memory and ignores communication costs.
+
+Task 17 - 3D Stencil Surface-to-Volume Scaling
+A cubic grid has N^3 cells, so compute work is O(N^3). Its outer surface has O(N^2) cells. Therefore the surface-to-volume ratio is O(N^2/N^3) = O(1/N).
+If total volume grows with P, N(P) = N0*P^(1/3). Then the global surface-to-volume ratio decreases like P^(-1/3).
+But actual distributed communication happens across subdomain boundaries. Under weak scaling with fixed-size cubic subdomains, each processor keeps about the same local volume and surface area, so local communication/computation ratio stays roughly constant. Communication latency, network congestion and synchronization can still make total runtime worse. So global surface-to-volume improvement does not automatically mean better per-processor communication efficiency.
