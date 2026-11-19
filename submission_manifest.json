@@ -1,0 +1,90 @@
+{
+  "github_username": "230103136-web",
+  "gpu_uuid": "GPU-3862ba87-13e4-7a6a-b852-bc839875c437",
+  "instance_seed": 7639941702540601062,
+  "mpi_ranks": 4,
+  "cartesian_dims": [
+    2,
+    2
+  ],
+  "grid": [
+    512,
+    512
+  ],
+  "local_padded_shape": [
+    258,
+    258
+  ],
+  "steps": 400,
+  "kappa_max": 0.23162793470602952,
+  "dx": 0.001949317738791423,
+  "dt": 3.2809856475985687e-06,
+  "dt_max": 4.1012320594982105e-06,
+  "serialized_ms": 2077.535732,
+  "overlapped_ms": 1464.758405,
+  "parity_max_diff": 0.0,
+  "ptx_audit": {
+    "st.shared.f64": 5,
+    "ld.shared.f64": 5,
+    "bar.sync": 1,
+    "st.shared_total": 10,
+    "ld.shared_total": 5,
+    "bar.sync_total": 1,
+    "passed": true
+  },
+  "ptx_audit_passed": true,
+  "serialized_energy_trace": [
+    {
+      "step": 0,
+      "energy": 0.045038669666294814,
+      "residual": 0.0
+    },
+    {
+      "step": 100,
+      "energy": 0.04502048271677786,
+      "residual": 0.0009643740970029775
+    },
+    {
+      "step": 200,
+      "energy": 0.04500920711145008,
+      "residual": 0.0009386942830135598
+    },
+    {
+      "step": 300,
+      "energy": 0.04499902516168916,
+      "residual": 0.0009210748229533373
+    },
+    {
+      "step": 400,
+      "energy": 0.044989249063757675,
+      "residual": 0.000904361120285457
+    }
+  ],
+  "overlapped_energy_trace": [
+    {
+      "step": 0,
+      "energy": 0.045038669666294814,
+      "residual": 0.0
+    },
+    {
+      "step": 100,
+      "energy": 0.04502048271677786,
+      "residual": 0.0009643740970029775
+    },
+    {
+      "step": 200,
+      "energy": 0.04500920711145008,
+      "residual": 0.0009386942830135598
+    },
+    {
+      "step": 300,
+      "energy": 0.04499902516168916,
+      "residual": 0.0009210748229533373
+    },
+    {
+      "step": 400,
+      "energy": 0.044989249063757675,
+      "residual": 0.000904361120285457
+    }
+  ]
+}
