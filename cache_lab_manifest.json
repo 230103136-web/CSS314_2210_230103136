@@ -1,0 +1,185 @@
+{
+  "system": {
+    "git_username": "230103136-web",
+    "cpu_model": "Apple M4",
+    "cpu_signature": "arm64::arm::10",
+    "logical_cores": 10,
+    "cache_line_bytes": 128,
+    "instance_seed": 9415928520890679791,
+    "affinity_supported": false,
+    "available_affinity": null,
+    "platform": "macOS-15.3-arm64-arm-64bit-Mach-O",
+    "python_version": "3.14.3",
+    "numpy_version": "2.4.4"
+  },
+  "num_threads": 4,
+  "iterations_per_thread": 60000000,
+  "benchmarks": {
+    "stride_1": {
+      "layout": "stride_1",
+      "stride": 1,
+      "spacing_bytes": 8,
+      "elapsed_ns": 79487666,
+      "ns_per_update": 0.3311986083333333,
+      "context_switches": {
+        "voluntary": 0,
+        "involuntary": 102
+      },
+      "final_values": [
+        480000000,
+        60000000,
+        120000000,
+        180000000
+      ],
+      "expected_values": [
+        480000000,
+        60000000,
+        120000000,
+        180000000
+      ],
+      "parity_passed": true,
+      "repetitions": 3,
+      "all_elapsed_ns": [
+        79259250,
+        79964542,
+        79487666
+      ]
+    },
+    "stride_4": {
+      "layout": "stride_4",
+      "stride": 4,
+      "spacing_bytes": 32,
+      "elapsed_ns": 74521292,
+      "ns_per_update": 0.31050538333333333,
+      "context_switches": {
+        "voluntary": 0,
+        "involuntary": 119
+      },
+      "final_values": [
+        480000000,
+        60000000,
+        120000000,
+        180000000
+      ],
+      "expected_values": [
+        480000000,
+        60000000,
+        120000000,
+        180000000
+      ],
+      "parity_passed": true,
+      "repetitions": 3,
+      "all_elapsed_ns": [
+        75539750,
+        74521292,
+        74300250
+      ]
+    },
+    "stride_8": {
+      "layout": "stride_8",
+      "stride": 8,
+      "spacing_bytes": 64,
+      "elapsed_ns": 30347084,
+      "ns_per_update": 0.12644618333333332,
+      "context_switches": {
+        "voluntary": 0,
+        "involuntary": 21
+      },
+      "final_values": [
+        480000000,
+        60000000,
+        120000000,
+        180000000
+      ],
+      "expected_values": [
+        480000000,
+        60000000,
+        120000000,
+        180000000
+      ],
+      "parity_passed": true,
+      "repetitions": 3,
+      "all_elapsed_ns": [
+        23423791,
+        35506000,
+        30347084
+      ]
+    },
+    "stride_16": {
+      "layout": "stride_16",
+      "stride": 16,
+      "spacing_bytes": 128,
+      "elapsed_ns": 28348959,
+      "ns_per_update": 0.1181206625,
+      "context_switches": {
+        "voluntary": 0,
+        "involuntary": 20
+      },
+      "final_values": [
+        480000000,
+        60000000,
+        120000000,
+        180000000
+      ],
+      "expected_values": [
+        480000000,
+        60000000,
+        120000000,
+        180000000
+      ],
+      "parity_passed": true,
+      "repetitions": 3,
+      "all_elapsed_ns": [
+        22528292,
+        30832750,
+        28348959
+      ]
+    },
+    "private": {
+      "layout": "private",
+      "stride": 8,
+      "spacing_bytes": 64,
+      "elapsed_ns": 66375,
+      "ns_per_update": 0.0002765625,
+      "context_switches": {
+        "voluntary": 0,
+        "involuntary": 19
+      },
+      "final_values": [
+        480000000,
+        60000000,
+        120000000,
+        180000000
+      ],
+      "expected_values": [
+        480000000,
+        60000000,
+        120000000,
+        180000000
+      ],
+      "parity_passed": true,
+      "repetitions": 3,
+      "all_elapsed_ns": [
+        82500,
+        65250,
+        66375
+      ]
+    }
+  },
+  "slowdown_stride1_vs_stride8": 2.6192851346112858,
+  "llvm_audit": {
+    "llvm_store_i64_count": 1,
+    "llvm_load_i64_count": 1,
+    "llvm_volatile_store_count": 0,
+    "llvm_memory_barrier_count": 2,
+    "llvm_store_examples": [
+      "store i64 %.169, ptr %sunkaddr1, align 8"
+    ],
+    "all_parity_passed": true,
+    "all_layouts_identical": true,
+    "llvm_has_i64_store": true,
+    "memory_store_per_iteration_verified": true
+  },
+  "verification_passed": true,
+  "memory_store_per_iteration_verified": true
+}
